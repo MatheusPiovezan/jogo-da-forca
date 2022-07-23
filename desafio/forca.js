@@ -1,4 +1,5 @@
-const palavraSecreta = 'abacaxi';
+const palavras = ['abacaxi', 'uva', 'pera', 'banana', 'jaboticaba'];
+const palavraSecreta = palavras[Math.floor(Math.random() * palavras.length)];
 const letrasCorretas = [];
 const letrasChutadas = [];
 let vidas = 6;
@@ -9,7 +10,8 @@ class Forca {
 
   chutar(letra) {
     console.clear();
-    checarEstado();
+    letra = letra.toLowerCase();
+
     validarLetra(letra, palavraSecreta);
     validarPalavra(palavraSecreta);
   }
@@ -109,12 +111,7 @@ function aForca() {
     console.log(" |       |    ");
     console.log(" |      /     ");
   }
-  if (vidas == 0) {
-    console.log(" |      (_)   ");
-    console.log(" |      /|/   ");
-    console.log(" |       |    ");
-    console.log(" |      //    ");
-  }
+ 
   console.log(" |            ");
   console.log("_|___         ");
 }
