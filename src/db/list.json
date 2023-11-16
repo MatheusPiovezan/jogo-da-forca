@@ -1,0 +1,14 @@
+[
+  {
+    "name": "frutas",
+    "arr": ["uva", "banana", "manga", "cajá", "pinha"]
+  },
+  {
+    "name": "animais",
+    "arr": ["leão", "cachorro", "tucano", "golfinho", "arara"]
+  },
+  {
+    "name": "carros",
+    "arr": ["golf", "hilux", "compass", "gol", "jetta"]
+  }
+]
