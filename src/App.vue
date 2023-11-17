@@ -6,6 +6,12 @@
     v-bind:kickedLetters="kickedLetters"
     v-bind:Kick="Kick"
   />
+  <Modal @close="toggleModal" :modalActive="modalActive">
+    <div class="modal-content">
+      <h1 v-if="won">Parabéns, você ganhou!</h1>
+      <h1 v-else>Você foi enforcado!</h1>
+    </div>
+  </Modal>
 </template>
 
 <script>
@@ -13,31 +19,34 @@ import Keyboard from "./components/Keyboard/index.vue";
 import Gallows from "./components/Gallows/index.vue";
 import list from "./db/list.json";
 import keyboardLetter from "./db/keyboardLetter.json";
+import Modal from "./components/Modal/index.vue";
+import { ref } from "vue";
 
 export default {
   components: {
     Keyboard,
     Gallows,
+    Modal,
   },
   data: function () {
     return {
       keyboardLetter: keyboardLetter,
+      won: true,
       life: 6,
       category: "",
       secretWord: "",
       word: [],
       correctLetters: [],
       kickedLetters: [],
+      modalActive: ref(false),
     };
   },
   methods: {
+    toggleModal() {
+      this.modalActive = !this.modalActive;
+    },
     Kick(e) {
       const letter = e.srcElement.textContent;
-
-      console.log(this.life);
-      if (this.life === 0) {
-        return console.log("perdeu");
-      }
 
       if (this.secretWord.includes(letter)) {
         this.correctLetters.push(letter);
@@ -46,6 +55,15 @@ export default {
       } else {
         this.kickedLetters.push(letter);
         this.life--;
+      }
+
+      if (this.word.join("") === this.secretWord) {
+        this.toggleModal();
+      }
+
+      if (this.life === 0) {
+        this.won = false;
+        this.toggleModal();
       }
     },
     ValidateWord() {
@@ -74,4 +92,14 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style lang="scss" scoped>
+.modal-content {
+  display: flex;
+  align-content: center;
+  justify-content: center;
+
+  h1 {
+    margin: 0 0 5rem 0;
+  }
+}
+</style>
