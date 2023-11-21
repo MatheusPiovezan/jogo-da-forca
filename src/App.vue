@@ -48,10 +48,10 @@ export default {
     Kick(e) {
       const letter = e.srcElement.textContent;
 
-      if (this.secretWord.includes(letter)) {
+      if (this.NormalizeLetter(this.secretWord).includes(letter)) {
         this.correctLetters.push(letter);
         this.kickedLetters.push(letter);
-        this.ValidateWord();
+        this.ValidateDisplayedWord();
       } else {
         this.kickedLetters.push(letter);
         this.life--;
@@ -66,16 +66,19 @@ export default {
         this.toggleModal();
       }
     },
-    ValidateWord() {
+    ValidateDisplayedWord() {
       this.word = [];
 
       this.secretWord.split("").forEach((letter) => {
-        if (this.correctLetters.includes(letter)) {
+        if (this.correctLetters.includes(this.NormalizeLetter(letter))) {
           this.word.push(letter);
         } else {
           this.word.push("_");
         }
       });
+    },
+    NormalizeLetter(letter) {
+      return letter.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     },
   },
   created: function () {
@@ -87,7 +90,7 @@ export default {
       ].toLocaleLowerCase();
     console.log(this.secretWord);
 
-    this.ValidateWord();
+    this.ValidateDisplayedWord();
   },
 };
 </script>
