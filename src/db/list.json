@@ -1,14 +1,30 @@
 [
   {
-    "name": "frutas",
-    "arr": ["uva", "banana", "manga", "cajá", "pinha"]
+    "name": "Animais",
+    "arr": ["Cachorro", "Gato", "Pássaro", "Elefante", "Leão", "Tigre"]
   },
   {
-    "name": "animais",
-    "arr": ["leão", "cachorro", "tucano", "golfinho", "arara"]
+    "name": "Cores",
+    "arr": ["Vermelho", "Azul", "Verde", "Amarelo", "Roxo", "Laranja"]
   },
   {
-    "name": "carros",
-    "arr": ["golf", "hilux", "compass", "gol", "jetta"]
+    "name": "Veículos",
+    "arr": ["Carro", "Ônibus", "Bicicleta", "Avião", "Caminhão", "Moto"]
+  },
+  {
+    "name": "Países",
+    "arr": ["Brasil", "Estados Unidos", "França", "Índia", "Japão", "Austrália"]
+  },
+  {
+    "name": "Instrumentos Musicais",
+    "arr": ["Violino", "Guitarra", "Piano", "Flauta", "Trompete", "Bateria"]
+  },
+  {
+    "name": "Estações do Ano",
+    "arr": ["Primavera", "Verão", "Outono", "Inverno", "Chuva", "Sol"]
+  },
+  {
+    "name": "Frutas",
+    "arr": ["Maçã", "Banana", "Morango", "Pera", "Uva", "Abacaxi"]
   }
 ]
