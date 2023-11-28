@@ -14,39 +14,41 @@
   </Modal>
 </template>
 
-<script>
+<script lang="ts">
 import Keyboard from "./components/Keyboard/index.vue";
 import Gallows from "./components/Gallows/index.vue";
 import list from "./db/list.json";
 import keyboardLetter from "./db/keyboardLetter.json";
 import Modal from "./components/Modal/index.vue";
-import { ref } from "vue";
+import { defineComponent } from "vue";
+import { GameData } from "./types";
 
-export default {
+export default defineComponent({
   components: {
     Keyboard,
     Gallows,
     Modal,
   },
-  data: function () {
+  data: function (): GameData {
     return {
       keyboardLetter: keyboardLetter,
       won: true,
       life: 6,
-      category: "",
+      category: null,
       secretWord: "",
       word: [],
       correctLetters: [],
       kickedLetters: [],
-      modalActive: ref(false),
+      modalActive: false,
     };
   },
   methods: {
-    toggleModal() {
+    toggleModal(this: GameData): void {
       this.modalActive = !this.modalActive;
     },
-    Kick(e) {
-      const letter = e.srcElement.textContent;
+    Kick(this: GameData, e: MouseEvent) {
+      const target = e.currentTarget as HTMLElement;
+      const letter: string = target?.textContent || "";
 
       if (this.NormalizeLetter(this.secretWord).includes(letter)) {
         this.correctLetters.push(letter);
@@ -66,10 +68,10 @@ export default {
         this.toggleModal();
       }
     },
-    ValidateDisplayedWord() {
+    ValidateDisplayedWord(this: GameData): void {
       this.word = [];
 
-      this.secretWord.split("").forEach((letter) => {
+      this.secretWord.split("").forEach((letter: string) => {
         if (this.correctLetters.includes(this.NormalizeLetter(letter))) {
           this.word.push(letter);
         } else {
@@ -77,7 +79,7 @@ export default {
         }
       });
     },
-    NormalizeLetter(letter) {
+    NormalizeLetter(letter: string): string {
       return letter.normalize("NFD").replace(/[\u0300-\u036f]/g, "");
     },
   },
@@ -92,7 +94,7 @@ export default {
 
     this.ValidateDisplayedWord();
   },
-};
+});
 </script>
 
 <style lang="scss" scoped>

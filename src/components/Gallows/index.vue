@@ -81,37 +81,37 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "Gallows",
   props: ["word", "category", "life"],
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 section {
   display: flex;
   flex-direction: column;
-}
 
-section .div-gallows {
-  max-width: 20rem;
-  max-height: 20rem;
-}
+  .div-gallows {
+    max-width: 20rem;
+    max-height: 20rem;
+  }
 
-section .div-category,
-.div-secretword {
-  display: flex;
-  justify-content: center;
-}
+  .div-category,
+  .div-secretword {
+    display: flex;
+    justify-content: center;
+  }
 
-section .div-category {
-  margin: 0 0 2rem 0;
-  font-size: 1.5rem;
-}
+  .div-category {
+    margin: 0 0 2rem 0;
+    font-size: 1.5rem;
+  }
 
-section .div-secretword {
-  margin: 4rem 0 2rem 0;
-  font-size: 1.2rem;
+  .div-secretword {
+    margin: 4rem 0 2rem 0;
+    font-size: 1.2rem;
+  }
 }
 </style>

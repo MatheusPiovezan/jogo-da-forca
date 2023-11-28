@@ -13,14 +13,10 @@
   </transition>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   props: ["modalActive"],
-  setup(props, { emit }) {
-    // const close = () => {
-    //   emit("close");
-    // };
-
+  setup() {
     const reload = () => {
       window.location.assign(window.location.href);
     };

@@ -18,20 +18,36 @@
   </section>
 </template>
 
-<script>
+<script lang="ts">
 export default {
   name: "Keyboard",
   props: ["keyboardLetter", "correctLetters", "kickedLetters", "Kick"],
 };
 </script>
 
-<style scoped>
+<style scoped lang="scss">
 section {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   row-gap: 0.8rem;
+
+  div {
+    button {
+      all: unset;
+      height: 40px;
+      width: 40px;
+      margin: 0 0.25rem 0 0.25rem;
+      font-size: 1.4rem;
+      text-align: center;
+      background-color: #fff;
+      border: 1px solid transparent;
+      border-color: #ccc;
+      border-radius: 0.5rem;
+      cursor: pointer;
+    }
+  }
 }
 
 .btn-success {
@@ -41,19 +57,5 @@ section {
 .btn-danger {
   background-color: #dc3545;
   color: #fff;
-}
-
-button {
-  all: unset;
-  height: 40px;
-  width: 40px;
-  margin: 0 0.25rem 0 0.25rem;
-  font-size: 1.4rem;
-  text-align: center;
-  background-color: #fff;
-  border: 1px solid transparent;
-  border-color: #ccc;
-  border-radius: 0.5rem;
-  cursor: pointer;
 }
 </style>
